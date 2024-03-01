@@ -1,0 +1,36 @@
+.input {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.select {
+  width: 100%;
+  height: 36px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.mat-mdc-form-field {
+  height: 40px;
+
+  ::ng-deep .mat-mdc-text-field-wrapper {
+    height: 36px;
+  }
+
+  ::ng-deep .mat-mdc-form-field-infix {
+    padding: 8px;
+  }
+}
+
+.icon-wrapper {
+  display: flex;
+
+  .mat-icon {
+    cursor: pointer;
+  }
+}
+

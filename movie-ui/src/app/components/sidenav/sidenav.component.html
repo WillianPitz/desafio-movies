@@ -1,0 +1,17 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" opened="true" class="sidenav">
+    <div class="text-wrapper">
+      <div class="icon-group">
+        <div ariaCurrentWhenActive="page" routerLinkActive="circle-active" [routerLink]="[dashboard]"></div>
+        <a ariaCurrentWhenActive="page" routerLinkActive="active" [routerLink]="[dashboard]">Dashboard</a>
+      </div>
+      <div class="icon-group">
+        <div ariaCurrentWhenActive="page" routerLinkActive="circle-active" [routerLink]="[list]"></div>
+        <a ariaCurrentWhenActive="page" routerLinkActive="active" [routerLink]="[list]">List</a>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

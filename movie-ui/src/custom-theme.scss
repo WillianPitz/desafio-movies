@@ -1,0 +1,20 @@
+
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$movie-ui-primary: mat.define-palette(mat.$indigo-palette);
+$movie-ui-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$movie-ui-warn: mat.define-palette(mat.$red-palette);
+
+$movie-ui-theme: mat.define-light-theme((
+  color: (
+    primary: $movie-ui-primary,
+    accent: $movie-ui-accent,
+    warn: $movie-ui-warn,
+  )
+));
+
+@include mat.all-component-themes($movie-ui-theme);
+

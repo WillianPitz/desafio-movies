@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 100px;
+}
+
+.content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding-left: 100px;
+}
+
+.sidenav {
+  display: flex;
+  width: 200px;
+  margin: 15px;
+  padding: 20px;
+  border-right: 0;
+  border-radius: 50px;
+  background-color: #FFF;
+  box-shadow: 0px 0px 31px 3px rgba(177, 172, 172, 0.75);
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  a:hover {
+    color: red;
+  }
+}
+
+.circle {
+  visibility: hidden;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: red;
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+
+  div:hover .circle {
+    visibility: visible;
+  }
+}
+
+.active {
+  color: red;
+}
+
+.circle-active {
+  visibility: visible;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: red;
+}
