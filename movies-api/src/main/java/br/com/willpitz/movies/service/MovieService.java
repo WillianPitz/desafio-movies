@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.Optional.ofNullable;
 
@@ -49,20 +50,22 @@ public class MovieService {
     }
 
     private List<MovieData> calculateIntervals(List<MovieEntity> movies) {
-        return movies.stream()
+        var sortedMovies = movies.stream()
             .sorted(Comparator.comparingInt(MovieEntity::getYear))
-            .toList().stream()
-            .flatMap(currentMovie -> movies.stream()
-                .filter(nextMovie -> nextMovie.getYear() > currentMovie.getYear())
-                .map(nextMovie -> {
-                    var interval = nextMovie.getYear() - currentMovie.getYear();
-                    return MovieData.builder()
-                        .producer(currentMovie.getProducers())
-                        .previousWin(currentMovie.getYear())
-                        .followingWin(nextMovie.getYear())
-                        .interval(interval)
-                        .build();
-                }))
+            .toList();
+
+        return IntStream.range(1, sortedMovies.size())
+            .mapToObj(movieIndex -> {
+                var previousMovie = sortedMovies.get(movieIndex - 1);
+                var currentMovie = sortedMovies.get(movieIndex);
+                int interval = currentMovie.getYear() - previousMovie.getYear();
+                return MovieData.builder()
+                    .producer(currentMovie.getProducers())
+                    .previousWin(previousMovie.getYear())
+                    .followingWin(currentMovie.getYear())
+                    .interval(interval)
+                    .build();
+            })
             .toList();
     }
 
@@ -85,5 +88,4 @@ public class MovieService {
                 .equals(movieData.getInterval()))
             .toList();
     }
-
 }
